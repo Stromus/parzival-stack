@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "login": "Connection"
+  },
+  "home": {
+    "title": "Bienvenue à la Stack Parzival",
+    "subTitle": "Une stack React, fait par Gravill0n",
+    "start": "Commencez",
+    "table": {
+      "id": "ID",
+      "name": "Nom",
+      "username": "Nom d'utilisateur",
+      "email": "Mail"
+    }
+  },
+  "login": {
+    "title": "Connection",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "success": "Connection réussie !",
+    "submit": "Connection"
+  }
+}

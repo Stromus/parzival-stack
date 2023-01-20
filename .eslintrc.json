@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:fp/recommended",
+    "react-app"
+  ],
+  "plugins": ["prettier", "fp"],
+  "rules": {
+    "prettier/prettier": "error",
+    "fp/no-nil": "off",
+    "fp/no-unused-expression": "off"
+  }
+}

@@ -1,0 +1,22 @@
+version: '3.8'
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge
+
+services:
+  client:
+    build: .
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.parzival-stack.rule=Host(`parzival-stack.localtest.me`)
+      - traefik.http.services.parzival-stack.loadbalancer.server.port=3000
+      - traefik.http.routers.parzival-stack.tls=true
+    restart: always
+    volumes:
+      - .:/app
+    networks:
+      - traefik_proxy

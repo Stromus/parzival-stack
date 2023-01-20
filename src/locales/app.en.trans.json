@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "home": "Home",
+    "login": "Login"
+  },
+  "home": {
+    "title": "Welcome to the Parzival Stack",
+    "subTitle": "A React stack, made by Gravill0n",
+    "start": "Start coding",
+    "table": {
+      "id": "ID",
+      "name": "Name",
+      "username": "User name",
+      "email": "Email"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "success": "Login successful !",
+    "submit": "Login"
+  }
+}
