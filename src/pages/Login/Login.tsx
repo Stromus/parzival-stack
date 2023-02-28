@@ -14,23 +14,17 @@ import { z } from 'zod'
 import { useTranslation } from 'react-i18next'
 
 import { useLogin } from '@Mutation/login'
-
-const loginSchema = z.object({
-  username: z.string().min(1, { message: 'Required' }),
-  password: z.string().min(1, { message: 'Required' }),
-})
-
-type LoginSchema = z.infer<typeof loginSchema>
+import { loginSchema, LoginData } from '@Type/login'
 
 export const Login = () => {
   const { t } = useTranslation('app', { keyPrefix: 'login' })
 
-  const { control, handleSubmit, watch } = useForm<LoginSchema>({
+  const { control, handleSubmit, watch } = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
   })
   const mutation = useLogin()
 
-  const onSubmit = (data: LoginSchema) => {
+  const onSubmit = (data: LoginData) => {
     console.log(data)
     mutation.mutate(data)
   }

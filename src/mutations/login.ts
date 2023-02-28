@@ -1,24 +1,30 @@
 import { useMutation, useQueryClient } from 'react-query'
 
-type LoginData = {
-  username: string
-  password: string
-}
+import { LoginData } from '@Type/login'
+import { ApiError, MutationContext } from '@Type/fetch'
+import axios, { AxiosError } from '@Middleware/axios'
+
+import {
+  onErrorInfniteDefault,
+  onMutateInfniteDefault,
+  onSettledDefault,
+} from './default'
 
 export const useLogin = () => {
   const queryClient = useQueryClient()
-  return useMutation(
+  return useMutation<
+    LoginData,
+    AxiosError<ApiError>,
+    LoginData,
+    MutationContext<LoginData>
+  >(
+    ['login'],
     (loginData: LoginData) =>
-      fetch('https://jsonplaceholder.typicode.com/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      }),
+      axios.post('https://jsonplaceholder.typicode.com/users', loginData),
     {
-      onError: err => console.error(err),
-      onSettled: () => queryClient.invalidateQueries('users'),
+      onMutate: onMutateInfniteDefault(queryClient, 'users'),
+      onError: onErrorInfniteDefault(queryClient, 'users'),
+      onSettled: onSettledDefault(queryClient, 'users'),
     }
   )
 }
